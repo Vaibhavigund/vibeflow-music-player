@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A modern music player with playlist support, built with HTML, CSS, and Vanilla JavaScript">
-    <title>Music Player - Spotify Inspired</title>
+    <meta name="description" content="VibeFlow - A modern music player with playlist support, built with HTML, CSS, and Vanilla JavaScript">
+    <title>VibeFlow - Modern Music Player</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/variables.css">
@@ -23,34 +26,54 @@
             <!-- Player Section -->
             <section class="player-section" aria-label="Music Player Controls">
                 
+                <!-- Branding -->
+                <div class="brand-header">
+                    <svg class="brand-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18V5l12-2v13"/>
+                        <circle cx="6" cy="18" r="3"/>
+                        <circle cx="18" cy="16" r="3"/>
+                    </svg>
+                    <h1 class="brand-name">VibeFlow</h1>
+                </div>
+
                 <!-- Album Cover -->
                 <div class="album-cover-container">
                     <div class="album-cover rotating-album">
-                        <img src="assets/images/placeholder-album.jpg" alt="Album Cover" id="albumCover">
+                        <img src="assets/images/placeholder-album.jpg" alt="Album Cover" id="albumCover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="album-placeholder">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 2v3"/>
+                                <path d="M12 19v3"/>
+                                <path d="M2 12h3"/>
+                                <path d="M19 12h3"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Song Information -->
                 <div class="song-info">
-                    <h2 class="song-title" id="songTitle">Select a Song</h2>
-                    <p class="song-artist" id="songArtist">Artist Name</p>
+                    <h2 class="song-title empty-state" id="songTitle">Choose a Track to Begin</h2>
+                    <p class="song-artist empty-state" id="songArtist">Your music journey starts here</p>
                 </div>
 
                 <!-- Playback Controls -->
                 <div class="controls">
-                    <button class="control-btn shuffle-btn" id="shuffleBtn" aria-label="Shuffle">
+                    <button class="control-btn shuffle-btn" id="shuffleBtn" aria-label="Shuffle" title="Shuffle">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
                         </svg>
                     </button>
 
-                    <button class="control-btn prev-btn" id="prevBtn" aria-label="Previous">
+                    <button class="control-btn prev-btn" id="prevBtn" aria-label="Previous" title="Previous">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
                         </svg>
                     </button>
 
-                    <button class="control-btn play-btn" id="playBtn" aria-label="Play">
+                    <button class="control-btn play-btn" id="playBtn" aria-label="Play" title="Play">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="play-icon">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
@@ -59,13 +82,13 @@
                         </svg>
                     </button>
 
-                    <button class="control-btn next-btn" id="nextBtn" aria-label="Next">
+                    <button class="control-btn next-btn" id="nextBtn" aria-label="Next" title="Next">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M16 18h2V6h-2zM6 18l8.5-6L6 6z"/>
                         </svg>
                     </button>
 
-                    <button class="control-btn repeat-btn" id="repeatBtn" aria-label="Repeat">
+                    <button class="control-btn repeat-btn" id="repeatBtn" aria-label="Repeat" title="Repeat">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M17 1l4 4-4 4"/>
                             <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
@@ -87,7 +110,7 @@
 
                 <!-- Volume Control -->
                 <div class="volume-container">
-                    <button class="volume-icon-btn" id="volumeIconBtn" aria-label="Mute/Unmute">
+                    <button class="volume-icon-btn" id="volumeIconBtn" aria-label="Mute/Unmute" title="Volume">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="volume-high">
                             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
                         </svg>
@@ -118,65 +141,85 @@
                         type="text" 
                         class="search-input" 
                         id="searchInput" 
-                        placeholder="Search songs..."
+                        placeholder="Search songs, artists..."
                         aria-label="Search songs"
                     >
                 </div>
 
                 <!-- Playlist Header -->
                 <div class="playlist-header">
-                    <h3>Playlist</h3>
-                    <span class="playlist-count" id="playlistCount">0 songs</span>
+                    <h3>Your Playlist</h3>
+                    <span class="playlist-count" id="playlistCount">4 songs</span>
                 </div>
 
                 <!-- Playlist Items -->
                 <div class="playlist-container" id="playlistContainer">
                     
-                    <!-- Playlist Item Template (will be dynamically generated) -->
-                    <div class="playlist-item" data-index="0">
+                    <!-- Sample Playlist Items -->
+                    <div class="playlist-item" data-index="0" tabindex="0">
                         <div class="playlist-item-number">1</div>
                         <div class="playlist-item-cover">
-                            <img src="assets/images/placeholder-album.jpg" alt="Song cover">
+                            <img src="assets/images/placeholder-album.jpg" alt="Song cover" onerror="this.style.display='none'; this.parentElement.classList.add('no-image')">
+                            <div class="cover-placeholder">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                                </svg>
+                            </div>
                         </div>
                         <div class="playlist-item-info">
-                            <div class="playlist-item-title">Sample Song 1</div>
-                            <div class="playlist-item-artist">Sample Artist</div>
+                            <div class="playlist-item-title">Midnight Dreams</div>
+                            <div class="playlist-item-artist">Luna Rivers</div>
                         </div>
                         <div class="playlist-item-duration">3:45</div>
                     </div>
 
-                    <div class="playlist-item" data-index="1">
+                    <div class="playlist-item" data-index="1" tabindex="0">
                         <div class="playlist-item-number">2</div>
                         <div class="playlist-item-cover">
-                            <img src="assets/images/placeholder-album.jpg" alt="Song cover">
+                            <img src="assets/images/placeholder-album.jpg" alt="Song cover" onerror="this.style.display='none'; this.parentElement.classList.add('no-image')">
+                            <div class="cover-placeholder">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                                </svg>
+                            </div>
                         </div>
                         <div class="playlist-item-info">
-                            <div class="playlist-item-title">Sample Song 2</div>
-                            <div class="playlist-item-artist">Sample Artist</div>
+                            <div class="playlist-item-title">Electric Pulse</div>
+                            <div class="playlist-item-artist">Neon Waves</div>
                         </div>
                         <div class="playlist-item-duration">4:12</div>
                     </div>
 
-                    <div class="playlist-item active" data-index="2">
+                    <div class="playlist-item active" data-index="2" tabindex="0">
                         <div class="playlist-item-number">3</div>
                         <div class="playlist-item-cover">
-                            <img src="assets/images/placeholder-album.jpg" alt="Song cover">
+                            <img src="assets/images/placeholder-album.jpg" alt="Song cover" onerror="this.style.display='none'; this.parentElement.classList.add('no-image')">
+                            <div class="cover-placeholder">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                                </svg>
+                            </div>
                         </div>
                         <div class="playlist-item-info">
-                            <div class="playlist-item-title">Sample Song 3 (Active)</div>
-                            <div class="playlist-item-artist">Sample Artist</div>
+                            <div class="playlist-item-title">Sunset Boulevard</div>
+                            <div class="playlist-item-artist">The Horizons</div>
                         </div>
                         <div class="playlist-item-duration">3:28</div>
                     </div>
 
-                    <div class="playlist-item" data-index="3">
+                    <div class="playlist-item" data-index="3" tabindex="0">
                         <div class="playlist-item-number">4</div>
                         <div class="playlist-item-cover">
-                            <img src="assets/images/placeholder-album.jpg" alt="Song cover">
+                            <img src="assets/images/placeholder-album.jpg" alt="Song cover" onerror="this.style.display='none'; this.parentElement.classList.add('no-image')">
+                            <div class="cover-placeholder">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                                </svg>
+                            </div>
                         </div>
                         <div class="playlist-item-info">
-                            <div class="playlist-item-title">Sample Song 4</div>
-                            <div class="playlist-item-artist">Sample Artist</div>
+                            <div class="playlist-item-title">Crystal Skies</div>
+                            <div class="playlist-item-artist">Aurora Bay</div>
                         </div>
                         <div class="playlist-item-duration">5:03</div>
                     </div>

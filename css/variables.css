@@ -7,18 +7,26 @@
     --color-primary: #1db954;           /* Spotify green */
     --color-primary-dark: #1aa34a;      /* Darker green for hover */
     --color-primary-light: #1ed760;     /* Lighter green for accents */
+    --color-primary-glow: rgba(29, 185, 84, 0.3);
     
     --color-bg-main: #121212;           /* Main background */
     --color-bg-elevated: #181818;       /* Card background */
     --color-bg-raised: #282828;         /* Hover states */
+    --color-bg-press: #1a1a1a;          /* Active/pressed states */
     --color-bg-overlay: rgba(0, 0, 0, 0.7);
     
     --color-text-primary: #ffffff;      /* Primary text */
     --color-text-secondary: #b3b3b3;    /* Secondary text */
     --color-text-muted: #6a6a6a;        /* Muted text */
+    --color-text-disabled: #4a4a4a;     /* Disabled text */
     
     --color-border: #282828;            /* Border color */
     --color-border-hover: #404040;      /* Border hover */
+    --color-border-focus: #535353;      /* Border focus */
+    
+    /* Brand Colors */
+    --color-brand-gradient-start: #1db954;
+    --color-brand-gradient-end: #1ed760;
     
     /* Spacing System */
     --spacing-xs: 0.25rem;   /* 4px */
@@ -46,6 +54,7 @@
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
+    --radius-xl: 16px;
     --radius-full: 50%;
     
     /* Shadows */
@@ -53,11 +62,16 @@
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
     --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px var(--color-primary-glow);
     
     /* Transitions */
-    --transition-fast: 0.15s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+    
+    /* Easing Functions */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     
     /* Z-index layers */
     --z-base: 1;
