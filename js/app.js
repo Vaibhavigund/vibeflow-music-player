@@ -68,7 +68,12 @@ class MusicPlayer {
      */
     init() {
         console.log('🎵 VibeFlow Music Player Initializing...');
-        
+        console.log('volumeBtn', this.volumeBtn);
+        console.log('volumeBar', this.volumeBar);
+        console.log('volumeFilled', this.volumeFilled);
+        console.log('volumeHandle', this.volumeHandle);
+        console.log('volumeHighIcon', this.volumeHighIcon);
+        console.log('volumeMuteIcon', this.volumeMuteIcon);
         // Set initial volume
         this.audio.volume = this.state.volume;
         this.updateVolumeUI();
