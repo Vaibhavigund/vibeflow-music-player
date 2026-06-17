@@ -1,0 +1,278 @@
+/* ================================
+   COMPONENT STYLES
+   ================================ */
+
+/* ========== BUTTONS ========== */
+
+.control-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.control-btn:hover {
+    color: var(--color-text-primary);
+    transform: scale(1.05);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Play Button - Larger and Special */
+.play-btn {
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-primary);
+    color: var(--color-bg-main);
+    box-shadow: var(--shadow-md);
+}
+
+.play-btn:hover {
+    background-color: var(--color-primary-light);
+    transform: scale(1.08);
+    box-shadow: var(--shadow-lg);
+}
+
+.play-btn:active {
+    transform: scale(1);
+}
+
+/* Active State for Shuffle and Repeat */
+.shuffle-btn.active,
+.repeat-btn.active {
+    color: var(--color-primary);
+}
+
+.shuffle-btn.active::after,
+.repeat-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-full);
+}
+
+/* ========== PROGRESS BAR ========== */
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background-color: var(--color-border);
+    border-radius: var(--radius-sm);
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.progress-bar:hover {
+    height: 8px;
+}
+
+.progress-filled {
+    height: 100%;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    width: 30%;
+    transition: width var(--transition-fast);
+    position: relative;
+}
+
+.progress-handle {
+    width: 14px;
+    height: 14px;
+    background-color: var(--color-text-primary);
+    border-radius: var(--radius-full);
+    position: absolute;
+    top: 50%;
+    right: -7px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.progress-bar:hover .progress-handle {
+    opacity: 1;
+}
+
+/* ========== VOLUME CONTROLS ========== */
+
+.volume-icon-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+    border-radius: var(--radius-md);
+}
+
+.volume-icon-btn:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-raised);
+}
+
+.volume-bar {
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-border);
+    border-radius: var(--radius-sm);
+    position: relative;
+    cursor: pointer;
+}
+
+.volume-bar:hover {
+    height: 6px;
+}
+
+.volume-filled {
+    height: 100%;
+    background-color: var(--color-text-primary);
+    border-radius: var(--radius-sm);
+    width: 70%;
+    transition: width var(--transition-fast);
+    position: relative;
+}
+
+.volume-handle {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-text-primary);
+    border-radius: var(--radius-full);
+    position: absolute;
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.volume-bar:hover .volume-handle {
+    opacity: 1;
+}
+
+/* ========== SEARCH INPUT ========== */
+
+.search-input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 48px;
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-md);
+    transition: all var(--transition-fast);
+}
+
+.search-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.search-input:focus {
+    border-color: var(--color-text-secondary);
+    background-color: var(--color-bg-raised);
+}
+
+.search-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    pointer-events: none;
+}
+
+/* ========== PLAYLIST ITEMS ========== */
+
+.playlist-item {
+    display: grid;
+    grid-template-columns: 30px 50px 1fr 60px;
+    gap: var(--spacing-md);
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    position: relative;
+}
+
+.playlist-item:hover {
+    background-color: var(--color-bg-raised);
+}
+
+.playlist-item.active {
+    background-color: var(--color-bg-raised);
+}
+
+.playlist-item.active .playlist-item-title {
+    color: var(--color-primary);
+}
+
+.playlist-item-number {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+}
+
+.playlist-item.active .playlist-item-number {
+    color: var(--color-primary);
+}
+
+.playlist-item-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.playlist-item-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playlist-item-info {
+    min-width: 0;
+}
+
+.playlist-item-title {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 2px;
+}
+
+.playlist-item-artist {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.playlist-item-duration {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-align: right;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Hover effect for playlist item number */
+.playlist-item:hover .playlist-item-number {
+    color: var(--color-text-primary);
+}
