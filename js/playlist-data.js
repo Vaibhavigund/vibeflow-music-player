@@ -47,8 +47,8 @@ const playlist = [
         duration: "3:56"
     },
     {
-        title: "Ocean Breeze",
-        artist: "Coastal Vibes",
+        title: "Barbaad",
+        artist: "Jubin Nautiyal",
         cover: "assets/images/cover6.png",
         audio: "assets/music/song6.mp3",
         duration: "4:31"
