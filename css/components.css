@@ -17,6 +17,14 @@
     position: relative;
     cursor: pointer;
     border: 1px solid transparent;
+    .prev-btn,
+    .next-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
 }
 
 .control-btn:hover {
